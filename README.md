@@ -1,0 +1,4 @@
+# Toolbox
+
+## `JsonResponseTrait`
+

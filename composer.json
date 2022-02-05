@@ -1,0 +1,20 @@
+{
+    "name": "knops/toolbox",
+    "description": "My Toolbox",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Knops\\Toolbox\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Knops\\ToolboxTests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "psr/http-message": "^1.0",
+        "slim/slim": "^4.9"
+    }
+}
