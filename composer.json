@@ -3,6 +3,7 @@
     "description": "My Toolbox",
     "type": "library",
     "autoload": {
+        "files": ["src/functions.php"],
         "psr-4": {
             "Knops\\Toolbox\\": "src/"
         }
@@ -15,6 +16,8 @@
     "require-dev": {
         "phpunit/phpunit": "^9.5",
         "psr/http-message": "^1.0",
-        "slim/slim": "^4.9"
+        "slim/slim": "^4.9",
+        "nesbot/carbon": "^2.57",
+        "doctrine/orm": "^2.11"
     }
 }
