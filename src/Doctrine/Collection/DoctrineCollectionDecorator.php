@@ -2,11 +2,43 @@
 
 namespace Knops\Toolbox\Doctrine\Collection;
 
-use Doctrine\Common\Collections\ArrayCollection as BaseArrayCollection;
+use Closure;
+use Doctrine\Common\Collections\{AbstractLazyCollection, Collection};
 
-class ArrayCollection extends BaseArrayCollection implements CollectionInterface
+class DoctrineCollectionDecorator extends AbstractLazyCollection implements CollectionInterface
 {
     use CollectionTrait;
+
+    public function __construct(Collection $collection)
+    {
+        $this->collection = $collection;
+    }
+
+    protected function doInitialize()
+    {
+    }
+
+    protected function decorate(Collection $collection): self
+    {
+        return new static($collection);
+    }
+
+    public function filter(Closure $p)
+    {
+        return $this->decorate(parent::filter($p));
+    }
+
+    public function map(Closure $func)
+    {
+        return $this->decorate(parent::map($func));
+    }
+
+    public function partition(Closure $p)
+    {
+        $partitions = parent::partition($p);
+
+        return [$this->decorate($partitions[0]), $this->decorate($partitions[1])];
+    }
 
     public function find(callable $callable): mixed
     {
