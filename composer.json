@@ -13,6 +13,9 @@
             "Knops\\ToolboxTests\\": "tests"
         }
     },
+    "require": {
+        "php": "^8.1"
+    },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
         "psr/http-message": "^1.0",
