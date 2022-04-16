@@ -45,3 +45,9 @@ Decorates an ResponseInterface object.
 Adds a convenient way to get Slim route arguments:
 
 - `getRouteArgumentValue(ServerRequestInterface $request, string $argumentName): ?string`
+
+## `Slim\SlimRouteContextTrait`
+
+Adds a convenient way to get the current route:
+
+- `getCurrentRoute(ServerRequestInterface $request): RouteInterface`

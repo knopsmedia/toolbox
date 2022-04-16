@@ -6,13 +6,22 @@ use Doctrine\ORM\{EntityManagerInterface, EntityRepository};
 
 abstract class AbstractEntityRepository
 {
-    protected ?EntityRepository $innerRepository = null;
+    private ?EntityRepository $innerRepository = null;
 
     public function __construct(
         private EntityManagerInterface $em
     ) {}
 
+    /**
+     * @return string
+     * @psalm-return class-string
+     */
     abstract protected function getEntityClassName(): string;
+
+    protected function getDoctrineManager(): EntityManagerInterface
+    {
+        return $this->em;
+    }
 
     protected function getDoctrineRepository(): EntityRepository
     {
