@@ -18,17 +18,13 @@ Such as:
 - `join(string $separator, ?callable $callable = null): string`
   - Join all elements of the collection and return a string
 
-## `Doctrine\Collection\CollectionTrait`
+## `Doctrine\Collection\CollectionFunctions`
 
 Implements all methods from CollectionInterface.
 
 ## `Doctrine\Collection\ArrayCollection`
 
 Decorates Doctrine's ArrayCollection to add methods from the CollectionInterface.
-
-## `Doctrine\Collection\DoctrineCollectionDecorator`
-
-Decorates a Doctrine Collection to add methods from the CollectionInterface.
 
 ## `Doctrine\Repository\AbstractEntityRepository`
 
