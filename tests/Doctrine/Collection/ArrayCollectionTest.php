@@ -66,21 +66,21 @@ class ArrayCollectionTest extends TestCase
     }
 
     /**
-     * @covers join()
-     * @return void
-     */
-    public function testJoin()
-    {
-        $this->assertEquals('foo,bar,baz', $this->collection->join(','));
-    }
-
-    /**
      * @covers sort()
      * @return void
      */
     public function testSort()
     {
         $this->assertEquals('bar,baz,foo', $this->collection->sort(fn($a, $b) => $a <=> $b)->join(','));
+    }
+
+    /**
+     * @covers join()
+     * @return void
+     */
+    public function testJoin()
+    {
+        $this->assertEquals('foo,bar,baz', $this->collection->join(','));
     }
 
     protected function setUp(): void

@@ -2,11 +2,18 @@
 
 namespace Knops\Toolbox\Doctrine\Collection;
 
-use Doctrine\Common\Collections\ArrayCollection as BaseArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection as DoctrineArrayCollection;
 
-class ArrayCollection extends BaseArrayCollection implements CollectionInterface
+final class ArrayCollection extends DoctrineArrayCollection implements CollectionInterface
 {
-    use CollectionTrait;
+    use CollectionFunctions {
+        find as private _find;
+        findIndex as private _findIndex;
+        findAll as private _findAll;
+        reduce as private _reduce;
+        sort as private _sort;
+        join as private _join;
+    }
 
     public function find(callable $callable): mixed
     {
@@ -28,15 +35,15 @@ class ArrayCollection extends BaseArrayCollection implements CollectionInterface
         return $this->_reduce($this, $callable, $initial);
     }
 
-    public function join(string $separator, ?callable $callable = null): string
-    {
-        return $this->_join($this, $separator, $callable);
-    }
-
     public function sort(callable $callable): CollectionInterface
     {
         $this->_sort($this, $callable);
 
         return $this;
+    }
+
+    public function join(string $separator, ?callable $callable = null): string
+    {
+        return $this->_join($this, $separator, $callable);
     }
 }
